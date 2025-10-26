@@ -25,6 +25,6 @@ with sync_playwright() as playwright:
     registration_button.click()
 
     # Проверяем, что появилось сообщение об ошибке
-    text_on_page = page.locator('//div//h6[@data-testid="dashboard-toolbar-title-text"]')
+    text_on_page = page.get_by_test_id('dashboard-toolbar-title-text')
     expect(text_on_page).to_be_visible()  # Проверяем видимость элемента
     expect(text_on_page).to_have_text("Dashboard")  # Проверяем текст
