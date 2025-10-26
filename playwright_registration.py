@@ -1,7 +1,6 @@
 from playwright.sync_api import sync_playwright, expect
 
 with sync_playwright() as playwright:
-    # Открываем браузер Chromium (не в headless режиме, чтобы видеть действия)
     browser = playwright.chromium.launch(headless=False)
     page = browser.new_page()  # Создаем новую страницу
 
