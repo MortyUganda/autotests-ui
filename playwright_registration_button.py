@@ -20,3 +20,4 @@ with sync_playwright() as playwright:
     password_input.fill('password')
 
     expect(registration_button).not_to_be_disabled()
+    
