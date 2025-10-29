@@ -20,7 +20,7 @@ with sync_playwright() as playwright:
     registration_button.click()
 
     context.storage_state(path="browser-state.json")
-
+    
     
 with sync_playwright() as playwright:
     browser = playwright.chromium.launch(headless=False)
@@ -28,8 +28,6 @@ with sync_playwright() as playwright:
 
     page = context.new_page()
     page.goto('https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/courses')
-    
-    page.wait_for_timeout(5000)
 
     courses_toolbar_text = page.get_by_test_id('courses-list-toolbar-title-text')
     expect(courses_toolbar_text).to_be_visible()
