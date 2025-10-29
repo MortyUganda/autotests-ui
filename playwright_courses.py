@@ -43,7 +43,7 @@ with sync_playwright() as playwright:
     expect(course_no_res_text).to_be_visible()
     expect(course_no_res_text).to_have_text('There is no results')
 
-    course_description_text = page.get_by_test_id('c1ourses-list-empty-view-description-text')
+    course_description_text = page.get_by_test_id('courses-list-empty-view-description-text')
     expect(course_description_text).to_be_visible()
     expect(course_description_text).to_have_text('Results from the load test pipeline will be displayed here')
 
