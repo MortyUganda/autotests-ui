@@ -1,7 +1,7 @@
-from playwright.sync_api import expect
+from playwright.sync_api import expect, Page
 
 
-def test_empty_courses_list(chromium_page_with_state):
+def test_empty_courses_list(chromium_page_with_state: Page):
     courses_toolbar_text = chromium_page_with_state.get_by_test_id('courses-list-toolbar-title-text')
     expect(courses_toolbar_text).to_be_visible()
     expect(courses_toolbar_text).to_have_text('Courses')
