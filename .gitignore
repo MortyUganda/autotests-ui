@@ -22,3 +22,7 @@ rad.json
 TestResults.xml
 __pycache__
 __pycache__/conftest.cpython-314-pytest-8.4.2.pyc
+.pyc
+browser-state.json
+.pytest_cache
+.idea
