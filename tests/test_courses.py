@@ -1,5 +1,5 @@
-from playwright.sync_api import expect, Page
 import pytest
+from playwright.sync_api import expect, Page
 from pages.create_course_page import CreateCoursePage
 from pages.courses_list_page import CoursesListPage
 
@@ -22,7 +22,7 @@ def test_empty_courses_list(chromium_page_with_state: Page):
     expect(course_description_text).to_have_text('Results from the load test pipeline will be displayed here')
  
 
-
+@pytest.mark.regression
 @pytest.mark.courses
 def test_create_course(create_course_page: CreateCoursePage, courses_list_page: CoursesListPage):
     create_course_page.visit('https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/courses/create')
