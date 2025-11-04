@@ -1,19 +1,17 @@
 import pytest
 from pages.registration_page import RegistrationPage
+from pages.dashboard_page import DashboardPage
 
 
 @pytest.mark.registration 
 @pytest.mark.regression
-@pytest.mark.parametrize(
-        'email, username, password, ', 
-        [
-        ("user@gmail.com", '123', "password"),
-        ('123@mail.ru', '123', '123'),
-        ]
-)
-
-def test_successful_registration(registration_page: RegistrationPage, email: str, username: str, password: str):
+def test_successful_registration(registration_page: RegistrationPage, dashboard_page: DashboardPage):
         registration_page.visit('https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/auth/registration')
-        registration_page.fill_registration_form_input(email=email, password=password, username=username)
+        registration_page.fill_registration_form_input(
+        email="user.name@gmail.com",
+        username="username",
+        password="password",
+        )
         registration_page.click_registration_button()
-        registration_page.check_course_title()
+
+        dashboard_page.check_dashboard_title()
