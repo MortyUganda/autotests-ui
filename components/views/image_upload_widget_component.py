@@ -18,14 +18,14 @@ class ImageUploadWidgetComponent(BaseComponent):
         self.remove_button = page.get_by_test_id(f'{identifier}-image-upload-widget-remove-button')
         self.upload_input = page.get_by_test_id(f'{identifier}-image-upload-widget-input')
 
-    def check_visible_image_upload_view(self, is_image_uploaded: bool = False):
+    def check_visible(self, is_image_uploaded: bool = False):
         expect(self.image_upload_info_icon).to_be_visible()
 
         expect(self.image_upload_info_title).to_be_visible()
         expect(self.image_upload_info_title).to_have_text(
             'Tap on "Upload image" button to select file'
         )
-                                    
+
         expect(self.image_upload_info_description).to_be_visible()
         expect(self.image_upload_info_description).to_have_text('Recommended file size 540X300')
 
