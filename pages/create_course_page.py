@@ -1,5 +1,8 @@
 from playwright.sync_api import Page, expect
 
+from components.navigation.navbar_component import NavbarComponent
+from components.views.empty_view_component import EmptyViewComponent
+from components.views.image_upload_widget_component import ImageUploadWidgetComponent
 from pages.base_page import BasePage
 
 
@@ -7,28 +10,13 @@ class CreateCoursePage(BasePage):
     def __init__(self, page: Page):
         super().__init__(page)
 
+        self.navbar = NavbarComponent(page)
+        self.preview_empty_view = EmptyViewComponent(page, identifier='create-course-preview')
+        self.exercises_empty_view = EmptyViewComponent(page, identifier='create-course-exercises')
+        self.image_upload_widjet = ImageUploadWidgetComponent(page, identifier='create-course-preview')
+
         self.create_course_title = page.get_by_test_id('create-course-toolbar-title-text')
         self.create_course_button = page.get_by_test_id('create-course-toolbar-create-course-button')
-
-        self.preview_image = page.get_by_test_id('create-course-preview-image-upload-widget-preview-image')
-        self.preview_empty_view_icon = page.get_by_test_id('create-course-preview-empty-view-icon')
-        self.preview_empty_view_title = page.get_by_test_id('create-course-preview-empty-view-title-text')
-        self.preview_empty_view_description = page.get_by_test_id('create-course-preview-empty-view-description-text')
-
-        self.preview_image_upload_icon = page.get_by_test_id('create-course-preview-image-upload-widget-info-icon')
-        self.preview_image_upload_title = page.get_by_test_id(
-            'create-course-preview-image-upload-widget-info-title-text'
-        )
-        self.preview_image_upload_description = page.get_by_test_id(
-            'create-course-preview-image-upload-widget-info-description-text'
-        )
-        self.preview_image_upload_button = page.get_by_test_id(
-            'create-course-preview-image-upload-widget-upload-button'
-        )
-        self.preview_image_remove_button = page.get_by_test_id(
-            'create-course-preview-image-upload-widget-remove-button'
-        )
-        self.preview_image_upload_input = page.get_by_test_id('create-course-preview-image-upload-widget-input')
 
         self.create_course_title_input = page.get_by_test_id('create-course-form-title-input').locator('input')
         self.create_course_estimated_time_input = (
