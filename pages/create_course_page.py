@@ -1,6 +1,5 @@
 from playwright.sync_api import Page, expect
 
-from components.navigation.navbar_component import NavbarComponent
 from components.views.empty_view_component import EmptyViewComponent
 from components.views.image_upload_widget_component import ImageUploadWidgetComponent
 from pages.base_page import BasePage
@@ -10,9 +9,8 @@ class CreateCoursePage(BasePage):
     def __init__(self, page: Page):
         super().__init__(page)
 
-        self.navbar = NavbarComponent(page)
-        self.image_upload_widjet = ImageUploadWidgetComponent(page, identifier='create-course-preview')
-        self.exercises_empty_view = EmptyViewComponent(page, identifier='create-course-exercises')
+        self.image_upload_widget = ImageUploadWidgetComponent(page, 'create-course-preview')
+        self.exercises_empty_view = EmptyViewComponent(page, 'create-course-exercises')
 
         self.create_course_title = page.get_by_test_id('create-course-toolbar-title-text')
         self.create_course_button = page.get_by_test_id('create-course-toolbar-create-course-button')
@@ -29,7 +27,6 @@ class CreateCoursePage(BasePage):
 
         self.exercises_title = page.get_by_test_id('create-course-exercises-box-toolbar-title-text')
         self.create_exercise_button = page.get_by_test_id('create-course-exercises-box-toolbar-create-exercise-button')
-
 
     def check_visible_create_course_title(self):
         expect(self.create_course_title).to_be_visible()
@@ -99,11 +96,11 @@ class CreateCoursePage(BasePage):
 
     def click_create_exercise_button(self):
         self.create_exercise_button.click()
-    
+
     def check_visible_exercises_empty_view(self):
         self.exercises_empty_view.check_visible(
             title='There is no exercises',
-            description='Click on "Create exercises" button to create new exercise'
+            description='Click on "Create exercise" button to create new exercise'
         )
 
     def click_delete_exercise_button(self, index: int):
