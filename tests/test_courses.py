@@ -14,7 +14,6 @@ def test_empty_courses_list(courses_list_page: CoursesListPage):
     courses_list_page.toolbar_view.check_visible()
     courses_list_page.check_visible_empty_view()
 
- 
 
 @pytest.mark.regression
 @pytest.mark.courses
