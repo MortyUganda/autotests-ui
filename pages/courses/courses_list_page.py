@@ -2,22 +2,26 @@ from playwright.sync_api import Page, expect
 
 from components.courses.course_view_component import CourseViewComponent
 from components.courses.course_view_menu_component import CourseViewMenuComponent
+from components.courses.update_course_component import UpdateCourseComponent
 from components.views.empty_view_component import EmptyViewComponent
 from navigation.navbar_component import NavbarComponent
 from navigation.sidebar_component import SidebarComponent
 from pages.base_page import BasePage
 from components.courses.courses_list_toolbar_view_component import CoursesListToolbarViewComponent
 
+
 class CoursesListPage(BasePage):
     def __init__(self, page: Page):
         super().__init__(page)
 
-        self.toolbar_view = CoursesListToolbarViewComponent(page)
         self.navbar = NavbarComponent(page)
         self.sidebar = SidebarComponent(page)
-        self.empty_view = EmptyViewComponent(page, 'courses-list')
         self.course_view = CourseViewComponent(page)
+        self.update_course = UpdateCourseComponent(page)
         self.view_menu_component = CourseViewMenuComponent(page)
+        self.toolbar_view = CoursesListToolbarViewComponent(page)
+        
+        self.empty_view = EmptyViewComponent(page, 'courses-list')
 
     def check_visible_empty_view(self):
         self.empty_view.check_visible(

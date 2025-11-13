@@ -10,14 +10,13 @@ class CourseViewComponent(BaseComponent):
     def __init__(self, page: Page):
         super().__init__(page)
 
-        self.menu = CourseViewMenuComponent(page)
-
         self.title = Text(page, 'course-widget-title-text', 'Title')
         self.image = Image(page, 'course-preview-image', 'Preview')
         self.max_score_text = Text(page, 'course-max-score-info-row-view-text', 'Max score')
         self.min_score_text = Text(page, 'course-min-score-info-row-view-text', 'Min score')
         self.estimated_time_text = Text(page, 'course-estimated-time-info-row-view-text', 'Estimated time')
 
+        
     def check_visible(self, index: int, title: str, max_score: str, min_score: str, estimated_time: str):
         # Используем nth=index для поиска элементов по индексу
         self.image.check_visible(nth=index)
