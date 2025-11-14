@@ -1,6 +1,5 @@
 import pytest
 
-@pytest.mark.ui
 class TestUserInterface:
 
     @pytest.mark.smoke
@@ -8,7 +7,6 @@ class TestUserInterface:
     def test_login_button(self):
         pass
 
-    @pytest.mark.regression
     def test_forgot_password_link(self):
         pass
 
