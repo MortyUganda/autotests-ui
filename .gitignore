@@ -27,3 +27,5 @@ browser-state.json
 .pytest_cache
 .idea
 c:\Users\Sergei\Documents\GitHub\autotests-ui\browser-state.json
+allure-report
+allure-results
