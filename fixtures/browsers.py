@@ -1,4 +1,3 @@
-from pydoc import source_synopsis
 import allure
 import pytest
 from playwright.sync_api import Playwright, Page
@@ -6,18 +5,12 @@ from playwright.sync_api import Playwright, Page
 from pages.authentication.registration_page import RegistrationPage
 from _pytest.fixtures import SubRequest
 
+from tools.playwright.pages import initialize_playwright_page
+
 @pytest.fixture
 def chromium_page(request: SubRequest, playwright: Playwright) -> Page: # type: ignore
-    browser = playwright.chromium.launch(headless=False)
-    context = browser.new_context()
-    context.tracing.start(screenshots=True, snapshots=True, sources=True)
+    yield from initialize_playwright_page(playwright, test_name=request.node.name) # type: ignore
 
-    yield browser.new_page()
-
-    context.tracing.stop(path=f'./tracing/{request.node.name}.zip')
-    browser.close()
-
-    allure.attach.file(f'./tracing/{request.node.name}.zip', name='trace', extension='zip') # Добавление файла в отчёт Allure
 
 @pytest.fixture(scope="session")
 def initialize_browser_state(playwright: Playwright):
@@ -32,15 +25,9 @@ def initialize_browser_state(playwright: Playwright):
 
     context.storage_state(path="browser-state.json")
     browser.close()
+    
 
 
 @pytest.fixture
-def chromium_page_with_state(request: SubRequest, initialize_browser_state, playwright: Playwright) -> Page:
-    browser = playwright.chromium.launch(headless=False)
-    context = browser.new_context(storage_state="browser-state.json")
-    context.tracing.start(screenshots=True, snapshots=True, sources=True)
-    yield context.new_page()
-    context.tracing.stop(path=f'./tracing/{request.node.name}.zip')
-    browser.close()
-
-    allure.attach.file(f'./tracing/{request.node.name}.zip', name='trace', extension='zip') # Добавление файла в отчёт Allure
+def chromium_page_with_state(request: SubRequest, initialize_browser_state, playwright: Playwright) -> Page: # type: ignore
+    yield from initialize_playwright_page(playwright, test_name=request.node.name, storage_state="browser-state.json") # type: ignore
