@@ -8,7 +8,7 @@ def initialize_playwright_page(
         playwright: Playwright,
         test_name: str,
         storage_state: str | None = None
-) -> Page:
+) -> Page: # type: ignore
     # Используем settings.headless
     browser = playwright.chromium.launch(headless=settings.headless)
     # Используем settings.videos_dir
@@ -16,7 +16,7 @@ def initialize_playwright_page(
     context.tracing.start(screenshots=True, snapshots=True, sources=True)
     page = context.new_page()
 
-    yield page
+    yield page # type: ignore
 
     # Используем settings.tracing_dir
     context.tracing.stop(path=settings.tracing_dir.joinpath(f'{test_name}.zip'))
@@ -24,4 +24,4 @@ def initialize_playwright_page(
 
     # Используем settings.tracing_dir
     allure.attach.file(settings.tracing_dir.joinpath(f'{test_name}.zip'), name='trace', extension='zip')
-    allure.attach.file(page.video.path(), name='video', attachment_type=allure.attachment_type.WEBM)
+    allure.attach.file(page.video.path(), name='video', attachment_type=allure.attachment_type.WEBM) # type: ignore

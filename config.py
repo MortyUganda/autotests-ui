@@ -41,9 +41,9 @@ class Settings(BaseSettings):
     @classmethod
     def initialize(cls):  # Возвращает экземпляр класса Settings
         # Указываем пути
-        videos_dir = DirectoryPath("./videos")
-        tracing_dir = DirectoryPath("./tracing")
-        browser_state_file = FilePath("browser-state.json")
+        videos_dir = DirectoryPath("./videos") # type: ignore
+        tracing_dir = DirectoryPath("./tracing") # type: ignore
+        browser_state_file = FilePath("browser-state.json") # type: ignore
          
         # Создаем директории, если они не существуют
         videos_dir.mkdir(exist_ok=True)  # Если директория сещуствует, то игнорируем ошибку
