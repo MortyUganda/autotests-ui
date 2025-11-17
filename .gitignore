@@ -24,9 +24,10 @@ __pycache__
 __pycache__/conftest.cpython-314-pytest-8.4.2.pyc
 .pyc
 browser-state.json
+C:\Users\Sergei\Documents\GitHub\autotests-ui\browser-state.json
 .pytest_cache
 .idea
-c:\Users\Sergei\Documents\GitHub\autotests-ui\browser-state.json
 allure-report
 allure-results
 videos
+tracing
