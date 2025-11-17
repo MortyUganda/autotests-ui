@@ -2,7 +2,7 @@
 from enum import Enum
 
 from pydantic import EmailStr, FilePath, HttpUrl, DirectoryPath, Field, BaseModel
-from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic_settings import BaseSettings, SettingsConfigDict  # type: ignore
 
 
 class Browser(str, Enum):
