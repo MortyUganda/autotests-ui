@@ -43,7 +43,7 @@ class TestCourses:
         create_course_page.create_course_exercises_toolbar_view.check_visible()
         create_course_page.check_visible_exercises_empty_view()
 
-        create_course_page.image_upload_widget.upload_preview_image(settings.test_data.image_png_file)
+        create_course_page.image_upload_widget.upload_preview_image(settings.test_data.image_png_file)  # type: ignore
         create_course_page.image_upload_widget.check_visible(is_image_uploaded=True)
         create_course_page.create_course_form.fill(
             title = "Playwright",
@@ -77,7 +77,7 @@ class TestCourses:
             min_score = "10"
         )
         create_course_page.image_upload_widget.check_visible(is_image_uploaded=False)
-        create_course_page.image_upload_widget.upload_preview_image(settings.test_data.image_png_file)
+        create_course_page.image_upload_widget.upload_preview_image(settings.test_data.image_png_file)  # type: ignore
         create_course_page.image_upload_widget.check_visible(is_image_uploaded=True)
 
         create_course_page.create_course_toolbar_view.check_visible()
