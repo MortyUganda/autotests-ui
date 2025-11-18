@@ -36,10 +36,13 @@ class Settings(BaseSettings):
     videos_dir: DirectoryPath
     tracing_dir: DirectoryPath
     browser_state_file: FilePath
+
+    # Добавили метод get_base_url
+    def get_base_url(self) -> str:
+        return f"{self.app_url}/"
     
-    # Добавили метод initialize
     @classmethod
-    def initialize(cls):  # Возвращает экземпляр класса Settings
+    def initialize(cls):
         # Указываем пути
         videos_dir = DirectoryPath("./videos") # type: ignore
         tracing_dir = DirectoryPath("./tracing") # type: ignore
