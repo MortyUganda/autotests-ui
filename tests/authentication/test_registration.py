@@ -23,6 +23,8 @@ from config import settings
 @allure.sub_suite(AllureStory.AUTHORIZATION)
 class TestRegistration:
     allure.tag(Severity.CRITICAL)
+    @allure.title("Registration with correct email, username and password")
+    @pytest.mark.xdist_group(name="authorization-group")  # Добавили xdist группу
     def test_successful_registration(self, dashboard_page: DashboardPage, registration_page: RegistrationPage):
         registration_page.visit(AppRoute.REGISTRATION)
         registration_page.registration_form.fill(
