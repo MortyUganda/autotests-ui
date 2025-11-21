@@ -61,14 +61,14 @@ jobs:
       - name: Upload math result from job(run-tests) file::allure-report-results
         uses: actions/upload-artifact@v5
         with:
-          name: allure-report-results
+          name: allure-results
           path: ./allure-results
 
       - name: Upload math result from job(run-tests) file::allure-report-history
         uses: actions/upload-artifact@v5
         with:
-          name: allure-report-history
-          path: allure-history
+          name: allure-history
+          path: ./allure-history
 
   publish-report:
     needs: run-tests  # publish-report стартует только после завершения run-tests
@@ -79,12 +79,12 @@ jobs:
       - name: Download math result for job(run-tests) file::allure-report-results
         uses: actions/download-artifact@v5
         with:
-          name: allure-report-history
+          name: allure-history
 
       - name: Download math result for job(run-tests) file::allure-report-history
         uses: actions/download-artifact@v5
         with:
-          name: allure-report-results
+          name: allure-results
 
        # 7. Шаг для деплоя отчёта Allure на GitHub Pages, чтобы его можно было просматривать в браузере
       - name: Deploy report to Github Pages
