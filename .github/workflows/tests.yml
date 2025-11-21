@@ -61,8 +61,8 @@ jobs:
         uses: actions/upload-artifact@v5
         with:
           name: allure-report-history
-          path: ./allure-results/
-
+          path: ./allure-history
+          
   publish-report:
     needs: run-tests  # publish-report стартует только после завершения run-tests
     runs-on: ubuntu-latest
