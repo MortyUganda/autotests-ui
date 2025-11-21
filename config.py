@@ -50,7 +50,7 @@ class Settings(BaseSettings):
         videos_dir = DirectoryPath("./videos") # type: ignore
         tracing_dir = DirectoryPath("./tracing") # type: ignore
         browser_state_file = FilePath("browser-state.json") # type: ignore
-        allure_results_dir = DirectoryPath("./allure_results") # type: ignore
+        allure_results_dir = DirectoryPath("./allure-results") # type: ignore
          
         # Создаем директории, если они не существуют
         allure_results_dir.mkdir(exist_ok=True)

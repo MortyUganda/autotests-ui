@@ -7,7 +7,7 @@ __pycache__
 
 # allure
 allure-report
-allure_results
+allure-results
 # testing artifacts
 *.html
 *.json
