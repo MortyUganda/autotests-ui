@@ -11,6 +11,3 @@ def create_allure_environment_file():
         file.write(properpies)
         file.write(f'\nos_info = {platform.system()} = {platform.release()}')
         file.write(f'\npython_version = {sys.version}')
-
-
-create_allure_environment_file()
