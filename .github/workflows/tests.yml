@@ -40,51 +40,42 @@ jobs:
         run: |
           pytest -m regression --alluredir=allure-results --numprocesses 5
             
-      # 5. Шаг для получения истории отчётов Allure, если она существует
-      - name: Get Allure history
-        uses: actions/checkout@v6  # Опять клонируем репозиторий, чтобы получить историю отчётов
-        if: always()  # Всегда выполняем, независимо от успеха или неудачи предыдущих шагов
-        continue-on-error: true  # Если здесь возникнет ошибка, workflow всё равно продолжит выполнение
-        with:
-          ref: gh-pages  # Указываем ветку gh-pages для получения отчётов
-          path: gh-pages  # Указываем путь для сохранения отчётов
 
-      # 6. Шаг для генерации и отображения отчёта Allure
+      #5 Upload отчётов allure
+      - name: Upload math result from job(run-tests) file::allure-report-results
+        uses: actions/upload-artifact@v5
+        with:
+          name: allure-results
+          path: allure-results
+
+
+  publish-report:
+    if: always()
+    needs: run-tests  # publish-report стартует только после завершения run-tests
+    runs-on: ubuntu-latest
+
+    steps:
+        # 6.1 Шаг, который будет клонировать ваш репозиторий на машину GitHub Actions
+      - name: Check out repository
+        uses: actions/checkout@v6
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+        #6.2 Download отчётов allure
+      - name: Download Allure results
+        uses: actions/download-artifact@v5
+        with:
+          name: allure-results
+          path: allure-results
+
+      # 6.3 Шаг для генерации и отображения отчёта Allure
       - name: Generates Allure Report with history
         uses: simple-elf/allure-report-action@v1.13  # Используем готовое решение из GitHub Marketplace для генерации Allure отчёта
         if: always()  # Этот шаг тоже всегда выполняется
         with:
           allure_results: allure-results  # Указываем каталог с результатами тестов
           allure_history: allure-history  # Указываем каталог для истории отчётов Allure
-
-      #6.1 Upload отчётов allure
-      - name: Upload math result from job(run-tests) file::allure-report-results
-        uses: actions/upload-artifact@v5
-        with:
-          name: allure-results
-          path: ./allure-results
-
-      - name: Upload math result from job(run-tests) file::allure-report-history
-        uses: actions/upload-artifact@v5
-        with:
-          name: allure-history
-          path: ./allure-history
-
-  publish-report:
-    needs: run-tests  # publish-report стартует только после завершения run-tests
-    runs-on: ubuntu-latest
-    steps:
-
-      # 7.1 Download отчётов allure
-      - name: Download math result for job(run-tests) file::allure-report-results
-        uses: actions/download-artifact@v5
-        with:
-          name: allure-history
-
-      - name: Download math result for job(run-tests) file::allure-report-history
-        uses: actions/download-artifact@v5
-        with:
-          name: allure-results
 
        # 7. Шаг для деплоя отчёта Allure на GitHub Pages, чтобы его можно было просматривать в браузере
       - name: Deploy report to Github Pages
