@@ -1,5 +1,5 @@
-from playwright.sync_api import Page, Locator, expect
 import allure
+from playwright.sync_api import Page, Locator, expect
 from elements.ui_coverage import tracker
 from ui_coverage_tool import ActionType, SelectorType
 from tools.logger import get_logger
