@@ -1,0 +1,21 @@
+INFO     BASE_PAGE:base_page.py:15 Opening the url "AppRoute.REGISTRATION"
+INFO     BASE_ELEMENT:base_element.py:25 Getting locator with "data-testid=registration-form-email-input" at index "0"
+INFO     INPUT:input.py:25 Fill input "Email" to value "user.name@gmail.com"
+INFO     BASE_ELEMENT:base_element.py:25 Getting locator with "data-testid=registration-form-email-input" at index "0"
+INFO     INPUT:input.py:34 Checking that input "Email" has a value "user.name@gmail.com"
+INFO     BASE_ELEMENT:base_element.py:25 Getting locator with "data-testid=registration-form-username-input" at index "0"
+INFO     INPUT:input.py:25 Fill input "Username" to value "username"
+INFO     BASE_ELEMENT:base_element.py:25 Getting locator with "data-testid=registration-form-username-input" at index "0"
+INFO     INPUT:input.py:34 Checking that input "Username" has a value "username"
+INFO     BASE_ELEMENT:base_element.py:25 Getting locator with "data-testid=registration-form-password-input" at index "0"
+INFO     INPUT:input.py:25 Fill input "Password" to value "password"
+INFO     BASE_ELEMENT:base_element.py:25 Getting locator with "data-testid=registration-form-password-input" at index "0"
+INFO     INPUT:input.py:34 Checking that input "Password" has a value "password"
+INFO     BASE_ELEMENT:base_element.py:25 Getting locator with "data-testid=registration-page-registration-button" at index "0"
+INFO     BASE_ELEMENT:base_element.py:43 Clicking button "Registration"
+INFO     BASE_ELEMENT:base_element.py:25 Getting locator with "data-testid=dashboard-toolbar-title-text" at index "0"
+INFO     BASE_ELEMENT:base_element.py:54 Checking that text "Title" is visible
+INFO     BASE_ELEMENT:base_element.py:25 Getting locator with "data-testid=dashboard-toolbar-title-text" at index "0"
+INFO     BASE_ELEMENT:base_element.py:65 Checking that text has text "Dashboard"
+INFO     save_allure_environment_file:allure.py:11 Создаем файл environment.properties
+INFO     create_allure_environment_file:environment.py:16 Создали файл environment.properties
