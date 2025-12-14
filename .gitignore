@@ -22,3 +22,5 @@ coverage-report.json
 coverage-history.json
 
 .DS_Store
+artifacts
+.devcontainer
